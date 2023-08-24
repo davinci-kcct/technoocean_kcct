@@ -1,2 +1,2 @@
 # technoocean_kcct
-author: MegumuIsshiki 
+author: Megumu Isshiki, Rento Makishima
