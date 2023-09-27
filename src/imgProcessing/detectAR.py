@@ -2,6 +2,7 @@
 https://shuzo-kino.hateblo.jp/entry/2023/01/23/235508 フルスクリーンにする方法
 https://python-academia.com/opencv-aruco/
 """
+
 import cv2
 from cv2 import aruco
 import time
@@ -35,14 +36,14 @@ try:
             cv2.putText(frame_markers,text = 'Uppper right : {}'.format(cornerUR),org = (20, 40),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.6,color=(250, 255, 255),thickness=2,lineType=cv2.LINE_4)
             cv2.putText(frame_markers,text = 'Bottom right : {}'.format(cornerBR),org = (20, 60),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.6,color=(255, 255, 255),thickness=2,lineType=cv2.LINE_4)
             cv2.putText(frame_markers,text = 'Bottom left : {}'.format(cornerBL),org = (20, 80),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.6,color=(255, 255, 255),thickness=2,lineType=cv2.LINE_4)"""
-            cv2.putText(frame_markers,text = 'Center : {}'.format(center),org = (20, 20),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.6,color=(255, 255, 255),thickness=2,lineType=cv2.LINE_4)
+            # cv2.putText(frame_markers,text = 'Center : {}'.format(center),org = (20, 20),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.6,color=(255, 255, 255),thickness=2,lineType=cv2.LINE_4)
         for sub_id in range(1,5):
             if sub_id in np.ravel(ids):
                 index = np.where(ids == sub_id)[0][0]
                 cornerUL = corners[index][0][0]
                 corner_array.append(cornerUL)
-        cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
-        cv2.setWindowProperty("frame",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+        # cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
+        # cv2.setWindowProperty("frame",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
         cv2.imshow('frame', frame_markers)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
