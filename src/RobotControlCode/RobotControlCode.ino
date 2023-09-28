@@ -1,11 +1,12 @@
-#include <Servo.h>
+#include <Keyboard.h>
 
-Servo sv1;
 
 int base = 200, adjust = 0;
 
 void setup() {
+  Keyboard.begin();
   Serial.begin(9600);
+  
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(5, OUTPUT);
@@ -14,7 +15,6 @@ void setup() {
   pinMode(8, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(12, OUTPUT);
-  // myservo.attach(4);
 }
 
 void loop() {
@@ -23,72 +23,51 @@ void loop() {
     input = Serial.read();
   }
   switch (input) {
-    case 'k':
-      digitalWrite(2, LOW);
+    case 'w':
+      digitalWrite(7, HIGH);
+      analogWrite(5, base);
       digitalWrite(12, LOW);
-      analogWrite(3, base + adjust);
       analogWrite(11, base);
       break;
-    case 'i':
-      digitalWrite(2, HIGH);
+    case 's':
+      digitalWrite(7, LOW);
+      analogWrite(5, base);
       digitalWrite(12, HIGH);
-      analogWrite(3, base + adjust);
       analogWrite(11, base);
       break;
-    case 'j':
-      digitalWrite(2, HIGH);
+    case 'a':
+      digitalWrite(7, LOW);
+      analogWrite(5, base);
       digitalWrite(12, LOW);
-      analogWrite(3, base + adjust);
       analogWrite(11, base);
       break;
-    case 'l':
-      digitalWrite(2, LOW);
+    case 'd':
+      digitalWrite(7, HIGH);
+      analogWrite(5, base);
       digitalWrite(12, HIGH);
-      analogWrite(3, base + adjust);
       analogWrite(11, base);
       break;
     default:
-      analogWrite(3, 0);
+      analogWrite(5, 0);
       analogWrite(11, 0);
       break;
   }
   switch (input) {
-    case 'a':
-      digitalWrite(7, HIGH);
+    case 'q':
+      digitalWrite(2, LOW);
+      analogWrite(3, base);
       digitalWrite(8, HIGH);
-      analogWrite(6, base + adjust);
-      analogWrite(5, base);
+      analogWrite(6, base);
       break;
-    case 'z':
-      digitalWrite(7, LOW);
+    case 'e':
+      digitalWrite(2, HIGH);
+      analogWrite(3, base);
       digitalWrite(8, LOW);
-      analogWrite(6, base + adjust);
-      analogWrite(5, base);
-      break;
-    case 'o':
-      sv1.write(130);
-      break;
-    case 'c':
-      sv1.write(30);
+      analogWrite(6, base);
       break;
     default:
+      analogWrite(3, 0);
       analogWrite(6, 0);
-      analogWrite(5, 0);
-      break;
-  }
-  switch (input) {
-    case '1':
-      adjust++;
-      break;
-    case '2':
-      adjust--;
-      break;
-    case ' ':
-      adjust = 0;
-      break;
-    case 'o':
-      break;
-    case 'c':
       break;
   }
 
